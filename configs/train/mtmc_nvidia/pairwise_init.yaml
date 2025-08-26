@@ -1,0 +1,124 @@
+DATASET:
+  # paths
+  ROOT: /mnt/ml_data/MTMC_Tracking_AIC23_Track1 
+  FRAMES_PATH: frames
+  FRAMES_EXT: jpg
+
+  LABELS_PATH: label.txt
+
+  # change propotion of train/val split
+  TRAIN_PERCENT: 0.7
+
+  NUM_FRAMES: 1  # number of frames for 3D Deter models. Should be 1. 
+  FRAMES_PER_SAMPLE: 4  # how many frames to include in one sample 
+  FRAME_STRIDE: 2 
+  SUBSAMPLE_RATE: 8 
+  # create new samples every X frames. Similar to frame stride, but this is used when creating new samples. 
+  # e.g. if frame stride = 5 and and subsample rate = 1 then 
+  # an instance will contain frames 0 5 10 etc. but the next instance will
+  # contain frames 1 6 11 etc.
+  
+  AUGUMENTATIONS: False
+  FRAME_SHAPE: [360, 640]
+
+  CAMS: 
+    # use only specified cameras or use all if none specified
+    # S002: [8, 9] # 8, 9, 10, 11, 12, 13
+
+  # scenes
+  LOCATIONS:
+    train: "S002"
+      # - "S002"
+      # - "S004"
+      # - "S006"
+      # - "S007"
+      # - "S010"
+      # - "S011"
+      # - "S012"
+      # - "S015"
+      # - "S016"
+      # - "S019"
+
+MODELS:
+  PAIRWISE:
+    BACKBONE: r50
+
+    FREEZE_DETR: False
+    RESET_TGT: True
+    RESET_UNUSED: 1 
+    WEIGHTED_VIEWS: False
+
+    PRED_TRACK_BOXES_TIME: True     # predict BB for frame before and after from track emedding
+
+    PAIRWISE_LOSS: True # in you don't have track labels
+    EMBEDDING_LOSS: False
+    
+    #unchanged
+    FREEZE_DETR_BACKBONE: False
+    NUM_CLASSES: 1
+    NUM_QUERIES: 20
+    PW_QUERIES: 20
+    PW_LAYERS: 1
+    PW_PASSTHROUGH_SRC: True
+    PW_PROJ_DIM_SCALE: 1
+    PW_NO_PROJ: False
+    DETACHED_UNTIL: 0
+    PRED_TRACK_BOXES: True
+    ADD_BBOXES: True
+    SCALED_COSTS: True
+    TGT_AS_POS: False
+    ZERO_QE: True
+    SELF_ATTENTION_BEFORE: False
+    SELF_ATTENTION_AFTER: True
+    RESET_TGT_UNTIL: 0
+    CLIP_LENGTH_PROGRESSION: 'linear'
+    CONTEXT_SIZE: 1
+    CHECKPOINT: '/net/mlfs01/export/users/dpatel/mcmot/checkpoints/detr/detr-r50-e632da11.pth'
+
+
+TRAINING:
+  # metrics
+  PRINT_FREQ: 100
+  SAVE_EVERY: 10 #Save the model every x epochs
+
+  # model
+  AMP: False
+  CUDNN_BENCHMARK: False
+  FIND_UNUSED_PARAM: False
+  MODEL: PAIRWISE
+  COMMENT: 'R50'
+
+  # data
+  PIN_MEMORY: False
+  BATCH_SIZE: 32
+  LOADER_NUM_WORKERS: 6
+
+  # misc
+  START_EPOCH: 0
+  MAX_GRAD_NORM: 3.0
+  MAX_NUM_EPOCHS: 50
+  ITS_PER_EPOCH: 200
+  
+  # optimizer
+  OPTIMIZER: adamw # [adam, sgd, adamw]
+  LR: 1e-4
+  LR_DETR_MULT: 1
+  WEIGHT_DECAY: 0. # 0.05 # 0.01, 1e-4
+  ADAM_EPS: 1e-8 # 1e-6
+  # SGD
+  MOMENTUM: 0.9
+  NESTEROV: True
+  
+  # # scheduler (default: ReduceLROnPlateau)
+  # SCHEDULER: cosine # linear | cosine | step
+  # LR_DECAY_RATIO: 0.3 # 0.3
+  # PATIENCE: 0
+  # LR_DROP: 1 # step 
+  # WARMUP_MULTIPLIER: 10 # cosine
+
+  # scheduler (default: ReduceLROnPlateau)
+  SCHEDULER: step # linear | cosine | step
+  LR_DECAY_RATIO: 0.3 # 0.3
+  PATIENCE: 0
+  STEP_SIZE: 20 # step 
+  WARMUP_MULTIPLIER: 2 # cosine

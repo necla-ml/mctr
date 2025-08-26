@@ -1,0 +1,68 @@
+# Project specific
+scratch.py
+test.py
+outputs/
+checkpoints/
+grad_outputs/
+eval_outputs/
+results/
+
+# Checkpoints and archives
+**/.ipynb_checkpoints
+*.pth
+*.pth.*
+*.tar
+*.tar.*
+*.zip
+*.mp4
+*.avi
+*.out
+*.npy
+*.err
+*.pkl
+*.jpg
+*.png
+*.json
+*.pkl.*
+*.pkl*
+*.obj
+# Generated logs
+screenlog.*
+*.log
+*.gz
+*.txt
+
+# From torchvision
+build/
+dist/
+docs/build
+*.egg-info/
+
+.coverage
+
+# Python
+*/**/__pycache__
+*/__pycache__
+*/*.pyc
+*/**/*.pyc
+*/**/**/*.pyc
+*/**/*~
+*~
+
+# System
+*.so*
+*.dylib*
+*/*.so*
+*/*.dylib*
+
+# VIM
+*.swp
+*.swo
+.*.swp
+
+# VSCode
+*.code-workspace
+.vscode/
+
+# Tensorboard
+runs/

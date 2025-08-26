@@ -1,0 +1,6 @@
+[submodule "submodules/trackeval"]
+	path = submodules/trackeval
+	url = https://github.com/JonathonLuiten/TrackEval.git
+[submodule "submodules/mcta"]
+	path = submodules/mcta
+	url = https://github.com/lockxuan/python-MCTA-Multiple-Camera-Tracking-Accuracy.git

@@ -1,0 +1,26 @@
+name: mcmot39
+channels:
+  - NECLA-ML
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy=1.21
+  - ml-vision=0.16.0
+  - ml-ws=0.6.0
+  - faiss-cpu
+  - yacs
+  - termcolor
+  - tabulate
+  - protobuf=3.20
+  - pycairo
+  - gdown
+  - cudatoolkit-dev=11.3 # required to compile NMR and detectron2
+  - scikit-image
+  - pip
+    # - pip:
+    # - chumpy
+    # - motmetrics
+    # - git+https://github.com/brjathu/NMR.git
+    # python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html
