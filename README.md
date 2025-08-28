@@ -5,7 +5,7 @@ This repository provides training and evaluation code for `MCTR` using MMPTracki
 
 ## Clone Repo
 ```sh
-git clone <repo address>
+git clone <repo_address>
 make pull # pull submodules
 ```
 
