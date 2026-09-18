@@ -1,5 +1,6 @@
 # MCTR: Multi Camera Tracking Transformer
 [![arXiv](https://img.shields.io/badge/arXiv-2408.13243-b31b1b.svg)](https://arxiv.org/pdf/2408.13243)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-FFD21E)](https://huggingface.co/deepsworld/mctr-mmptrack)
 
 This repository provides training and evaluation code for `MCTR` using MMPTracking and MTMC_NVIDIA datasets. 
 
